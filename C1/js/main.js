@@ -1,4 +1,4 @@
-
+/* Cecilia Zucchino */
 var peso=parseInt(prompt("Ingrese su peso"));
 var altura=parseInt(prompt("Ingrese su  altura en cm. Por ejemplo 175 o 165 cm"));
 

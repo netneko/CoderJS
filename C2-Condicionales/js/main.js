@@ -1,4 +1,4 @@
-
+/* Cecilia Zucchino */
 function  calcularIMC ()
 {
     var peso=parseInt(document.getElementById('peso').value);
