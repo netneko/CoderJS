@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/C2/css/style.css">
     <title>Calculadora IMC </title>
 </head>
 <body>
-    <h3>Vamos a calcular tu IMC </h3>
-    <form id="formulario" onsubmit="calcularIMC()">
+    <h3>Calculadora de IMC - Indice de masa corporal </h3>
+    <div class="contenedor">
+        <form id="formulario" onsubmit="calcularIMC()">
         <label for="peso">
             Ingresar peso
         </label>
@@ -21,7 +23,8 @@
         <input type="text" id="altura" required="required">
         <br>
         <button type="submit">Calcular</button>
-    </form>
+    </form> 
+    </div>
     <p id="resultado"></p>
     <script src="js/main.js"></script>
 </body>
