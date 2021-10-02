@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="CLPtoARS">
         <h3>Calculadora Pesos Chilenos (CLP) a Pesos Argentinos (ARS)</h3>
         <form id="formulario" onsubmit="clpToArs()">
             <label for="clp">
@@ -20,6 +20,8 @@
             <br>
             <button type="submit">Calcular</button>
         </form>
+    </div>
+    <div class="ARStoCLP">
         <h3>Calculadora Pesos Argentinos (ARS) a Pesos Chilenos (CLP)</h3>
         <form id="formulario" onsubmit="arsToClp()">
             <label for="ars">
@@ -31,7 +33,6 @@
             <button type="submit">Calcular</button>
         </form>
     </div>
-
     <p id="resultado"></p>
     <script src="js/main.js"></script>
 </body>
