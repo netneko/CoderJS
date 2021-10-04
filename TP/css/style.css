@@ -1,4 +1,154 @@
-.parallax-window {
-    min-height: 400px;
-    background: transparent;
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
+
+body {
+    width: 100%;
+    height: 100%;
+}
+/* -------------------NAVBAR--------------------------------------------- */
+.container-fluid {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    gap: 4rem;
+}
+
+.navbar-nav {
+    gap: 2rem;
+}
+
+.navbar-nav a {
+    color: #0B4666;
+}
+
+/* ----------------FIN NABVAR ---------------------------------------------*/
+section
+{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+.imgBanner .img-fluid
+{
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+
+/* -------------------------BOTONERA CATEGORIAS----------------------------------------- */
+.buttons
+{
+    margin-top:4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botonones categorias */
+
+.boton
+{
+    background-color:#6daadd;
+    border-color:#6daadd;
+    color: white;
+}
+
+.boton:hover
+{
+    background-color: #457B9D;
+    border-color: #457B9D;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.boton:active /* Este comportamiento lo tengo que cambiar con javscript */
+{
+    background-color:#4d8cc0;
+    border-color:#4d8cc0;
+    color: white;
+}
+/* ---------------------------MENU DROPDOWN FILTRO ------------------------------ */
+.filtro
+{
+    margin-top:1rem;
+    background-color: #A8DADC;
+    border-color: #A8DADC;
+    color: white;
+}
+
+/* --------------------------CARD PRODUCTOS ------------------------------------- */
+
+.productos
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contProd
+{
+    display: flex;
+    flex-direction: column;
+    border: solid 0.2px rgb(201, 199, 199);
+    margin:3rem 0.7em 3rem 0;
+    padding: 0.3rem;
+}
+
+.contProd__img
+{
+    width: auto;
+    height: 10rem;
+}
+
+.contProd__titulo
+{
+    text-align: center;
+    margin: auto;
+    margin: 0.5rem 0rem 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.contPrecio
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contPrecio__precio
+{
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0.3rem;
+}
+
+.contPrecio__boton
+{
+    border-radius: 5%;
+    font-size: 1rem;
+    padding: 0.1rem;
+    background-color:#6daadd;
+    border-color:#6daadd;
+    color: white;
+    margin-right:0.2rem;
+    width: 5rem;
+}
+
+.contPrecio__boton:hover
+{
+    background-color:#6793b8;
+    border-color:#6793b8;
+}
+
+/* .buttons .btn btn-primary boton
+{
+    border-radius: 0%;
+    font-size:0.8rem;
+    padding: 0.5rem;
+    background-color: steelblue;
+    border: solid 1px steelblue;
+    color: white;
+} */
