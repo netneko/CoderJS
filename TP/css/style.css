@@ -7,7 +7,6 @@
 
 body {
     width: 100%;
-    height: 100%;
 }
 /* -------------------NAVBAR--------------------------------------------- */
 .container-fluid {
@@ -25,12 +24,35 @@ body {
     color: #0B4666;
 }
 
+.nav-link::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    transition: all .8s;
+}
+
+.nav-link:hover:after {
+    color: #6daadd;
+    width: 100%;
+    background: #6daadd;
+}
+
+/* ICONOS */
+
+.ri-shopping-cart-2-line
+{
+    padding: 0.4rem;
+}
 /* ----------------FIN NABVAR ---------------------------------------------*/
 section
 {
     display: flex;
     flex-direction:column;
     align-items:center;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -93,7 +115,7 @@ section
 {
     display: flex;
     flex-direction: column;
-    border: solid 0.2px rgb(201, 199, 199);
+    border: solid 0.1px rgb(214, 213, 213);
     margin:3rem 0.7em 3rem 0;
     padding: 0.3rem;
 }
@@ -143,12 +165,63 @@ section
     border-color:#6793b8;
 }
 
-/* .buttons .btn btn-primary boton
+/* ------------------------------------------------FOOTER------------------------------------------------------ */
+
+footer
 {
-    border-radius: 0%;
-    font-size:0.8rem;
-    padding: 0.5rem;
-    background-color: steelblue;
-    border: solid 1px steelblue;
-    color: white;
-} */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #6daadd;
+    color: whitesmoke;
+    padding: 1rem 0 0 0rem;
+    width: 100%;
+    position:relative;
+    bottom: 0;
+}
+
+/* Contenedor columna direcciones */
+.footer__dir
+{
+    display: flex;
+    flex-direction: column;
+}
+/* Titulo columna : CONTACTO */
+.footer__h5
+{
+    margin-left: 0.7rem;
+    font-size: 1rem;
+}
+
+/* Telefono y direccion */
+footer p
+{
+    margin-left: 0.7rem;
+    font-size: 0.9rem;
+}
+
+/* Contenedor links preguntas */
+.footer__links
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__links--titulo
+{
+    margin-left: 0.7rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.footer__links--f
+{
+    margin-left: 0.7rem;
+    font-size: 0.9rem;
+}
+
+/* Contenedor redes sociales y su titulo */
+.footer_redes--h5
+{
+    font-size: 1rem;
+    margin: 0;
+}
