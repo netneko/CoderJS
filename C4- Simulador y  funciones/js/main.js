@@ -1,20 +1,16 @@
-/* Cecilia Zucchino */
 
-let CLP=parseInt(document.getElementById('clp').value);
-
-/* Pasar de CLP a USD */
-
-const toUSD = function () { return CLP / 811.70 }; /* ESTO NO ME ANDA */
+function clpToUSD (clp)
+{ 
+    return clp / 811.70; 
+}
 
 
-/* PAsar de USD a ARS */
-function  usdToArs()
+function  clpToArs ()
 {
-    /* Paso 2 : Pasar de USD a ARS */
-    let ars = toUSD() * 98.8;
-    /* Paso 3: Calcular impuesto */
+    var clp=parseInt(document.getElementById('clp').value);
+    let USD= clpToUSD(clp);
+    let ars= USD * 98.5130 
     let imp= ars * 0.65;
-    /* Paso 4 : Sumar el valor del impuesto al valor en ARS */
     let total= ars + imp;
     alert("El importe en pesos Argentinos (ARS) es : " + Math.round(total) + " $ de los cuales " + Math.round(imp) + "$ son de impuestos"); 
 }
