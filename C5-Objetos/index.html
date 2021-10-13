@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/C5-Objetos/css/style.css">
+    <title>Calculadora IMC </title>
+</head>
+<body>
+    <h3>Calculadora de IMC - Indice de masa corporal </h3>
+    <div class="contenedor">
+        <form id="formulario" onsubmit="calcularIMC()">
+        <label for="nombre">Ingresar nombre</label>
+        <br>
+        <input type="text" id="nombre" required="required">
+        <br>
+        <label for="edad">Ingresar edad</label>
+        <br>
+        <input type="text" id="edad" required="required">
+        <br>
+        <label for="peso">Ingresar peso</label>
+        <br>
+        <input type="text" id="peso" required="required">
+        <br>
+        <label for="altura">Ingresa tu altura en centrimetros. Por ejemplo, 180 o 175</label>
+        <br>
+        <input type="text" id="altura" required="required">
+        <br>
+        <button type="submit">calcularIMC</button>
+    </form> 
+    </div>
+    <p id="resultado"></p>
+    <script src="js/main.js"></script>
+</body>
+</html>
