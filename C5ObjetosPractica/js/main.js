@@ -44,7 +44,7 @@ class Pedido
 
 function tomarPedido()
 {
-    while (!producto) 
+    while (!producto || producto > 4) 
     {
         producto= parseInt(prompt("Que producto desdea ingresar?\n 1: Sal Romero y Malbec (200$) \n 2: Sal Asiática ($200) \n 3: Rub pollo y pescado ($250)"));
     }    

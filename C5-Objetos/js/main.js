@@ -17,9 +17,8 @@ function  calcularIMC ()
     let peso= parseInt(document.getElementById('peso').value);
     let altura= parseInt(document.getElementById('altura').value);
     const persona1= new Persona (nombre,edad,peso,altura);
-    console.log(persona1);
     let alt=altura / 100;
-    let IMC= peso / (alt * alt);
+    let IMC= peso / (alt * alt); 
     let clasif;
     if(IMC < 18.49)
     {
