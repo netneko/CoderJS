@@ -63,18 +63,21 @@ function tomarPedido()
                 precio= 250;
                 break;                                      
         }
+        console.log(precio);
     
         while (!cantidad || cantidad == 0)
         {
             cantidad= parseInt(prompt("Producto elegido : " + producto + "\n Introduzca la cantidad deseada"))
         }
+        console.log(cantidad);
         return new Pedido(producto,precio,cantidad);
 }
 
 const pedido= tomarPedido();
-pedido.calcularSubtotal;
-pedido.calcularEnvio;
-pedido.calcularIVA;
-pedido.calcularTotal;
+pedido.calcularSubtotal();
+pedido.calcularEnvio();
+pedido.calcularIVA();
+pedido.calcularTotal();
 
-alert("Detalle del pedido \n"+ pedido.producto + "\n Cantidad " + pedido.cantidad + "\n SubTotal " +pedido.subTotal + "\n Total " + pedido.total);
+alert("Detalle del pedido \n"+ pedido.producto + "\n Cantidad " + pedido.cantidad + "\n SubTotal " + pedido.subTotal + "\n Envio " + pedido.envio
+ + "\n Total " + pedido.total);
