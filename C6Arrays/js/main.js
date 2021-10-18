@@ -1,71 +1,60 @@
-/* const numeros= [1,2,3,4,5];
-let suma= numeros[0] + numeros[1];
-console.log(suma);
+/* Cecilia Zucchino */
+let nombreArray=[];
+let edad= 0;
+let peso= 0;
+let altura= 0;
+let clasif="";
 
-
-
-
-numeros.push(6);
-console.log(numeros.length);
-const frutas=["Frutilla","Pera","Manzana","Uva","Frambuesa"];
-console.log(frutas.slice(1,3)); //Muestra pera y manzana. El primer parametro es desde y el segundo es hasta -1
-
-const listaNombres=[];
-let cantidad=5;
-do{
-    let entrada= prompt("Ingrese nombre");
-    listaNombres.push(entrada);
-    console.log(listaNombres.length);
-}while(listaNombres.length!= cantidad)
-
-for (let i=0; i < listaNombres.length; i ++)
+class Persona 
 {
-    alert(listaNombres);
-} */
-
-//Arrays de objetos
-
-/* const objeto1={id:1, producto: "Sal Malbec y Romero",precio: 250};
-const objeto2={id:2, producto: "Sal Asiatica",precio: 250};
-const objeto3={id:3, producto: "Sal Oriental",precio: 250};
-
-const arrayObjetos=[objeto1,objeto2];
-arrayObjetos.push(objeto3);
-console.log(arrayObjetos);
-for (const productos of arrayObjetos) //OJO aca el productos despues del const es algo que se define aca, puede tener cualquier nombre
-{
-    console.log(productos.producto);
-}
- */
-class Producto
-{
-    constructor (nombre,precio)
+    constructor (nombreArray,edad, peso, altura)
     {
-        this.nombre=nombre,
-        this.precio=precio
+    this.nombreArray= nombreArray,
+    this.edad= edad,
+    this.peso= peso,
+    this.altura= altura,
+    this.IMC=0;
+    this.clasif="";
+    }  
+
+    calcularIMC()
+    {
+        let alt=this.altura/100;
+        this.IMC=this.peso / (alt * alt);
     }
-    sumarIVA()
+
+    setClasificacion()
     {
-        this.precio= this.precio * 1.21;
+        if(this.IMC < 18.49)
+        {
+            this.clasif='Peso bajo';
+        }
+        else if (this.IMC < 24.9)
+        {
+            this.clasif='Peso normal';
+        }
+        else if((this.imc > 25)&&(IMC < 29.9))
+        {
+            this.clasif='Sobrepeso';
+        }
+        else
+        {
+            this.clasif='Obesidad';
+        }
     }
 }
 
-const listaProductos=[];
-const prod1=new Producto("Arroz",100);
-const prod2=new Producto("Fideos",150);
-listaProductos.push(prod1);
-listaProductos.push(prod2);
-listaProductos.push(new Producto("Pan",200));
-for(const productos of listaProductos)
+function  tomarDatos()
 {
-    listaProductos.sumarIVA;
+    let nombre= prompt("Ingrese nombre ");
+    const arrayN=arrayN.push(nombre);
+    edad= parseInt(prompt("Ingrese edad"));
+    peso= parseInt(prompt("Ingrese peso"));
+    altura=parseInt(prompt("Ingrese altura"));
+    return new Persona (arrayN,edad,peso,altura); 
 }
-
-console.log(listaProductos);
-
-
-//metodos
-
-const nros =[1,2,3,4,5];
-const filtro1 =nros.filter(elemento => elemento> 3);
-console.log(filtro1); //Me devuelve 4 y5 porque son los nros mayores a 3
+const persona= tomarDatos();
+persona.calcularIMC();
+persona.setClasificacion();
+console.log(persona.nombreArray);
+alert("su IMC es : " + persona.IMC + "y estas con : " + persona.clasif); 
