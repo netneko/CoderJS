@@ -47,7 +47,8 @@ class Persona
 function  tomarDatos()
 {
     let nombre= prompt("Ingrese nombre ");
-    const arrayN=arrayN.push(nombre);
+    const arrayN=[];
+    arrayN.push(nombre.toUpperCase());
     edad= parseInt(prompt("Ingrese edad"));
     peso= parseInt(prompt("Ingrese peso"));
     altura=parseInt(prompt("Ingrese altura"));
@@ -57,4 +58,4 @@ const persona= tomarDatos();
 persona.calcularIMC();
 persona.setClasificacion();
 console.log(persona.nombreArray);
-alert("su IMC es : " + persona.IMC + "y estas con : " + persona.clasif); 
+alert(" " + persona.nombreArray + " su IMC es : " + persona.IMC + "y estas con : " + persona.clasif); 
