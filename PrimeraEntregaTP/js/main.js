@@ -1,3 +1,4 @@
+/* Cecilia Zucchino */
 let producto= 0;
 let cantidad= 0;
 let precio= 0;
