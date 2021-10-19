@@ -44,11 +44,10 @@ class Pedido
 
 function tomarPedido()
 {
-    while (!producto || producto > 4) 
+    while (!producto || producto > 8) 
     {
-        producto= parseInt(prompt("Que producto desdea ingresar?\n 1: Sal Malbec, romero y cebolla (200$) \n 2: Sal Asiática ($200) \n 3: Sal cítrica ($200) \n 4: Oriental 7 especias ($200) \n 5: Pimentón Ahumado ($200) \n 6: Chucrut ($350) \n 7: Pepinos agridulces ($350) \n  8: Morrones asados ($350) \n "));
-    }    
-
+        producto= parseInt(prompt("Que producto desea comprar?\n 1: Sal Malbec, romero y cebolla (200$) \n 2: Sal Asiática ($200) \n 3: Sal cítrica ($200) \n 4: Oriental 7 especias ($200) \n 5: Pimentón Ahumado ($200) \n 6: Chucrut ($350) \n 7: Pepinos agridulces ($350) \n 8: Morrones asados ($350) \n "));
+    } 
     switch (producto) 
         {
             case 1:
@@ -81,7 +80,40 @@ function tomarPedido()
             case 8:
                 producto= "Morrones asados";
                 precio= 350;
-                break;                                                 
+                break;
+            /*  case 9:
+                producto= "Ajo confitado";
+                precio= 350;
+                break;
+            case 10:
+                producto= "Borsch";
+                precio= 350;
+                break;
+            case 11:
+                producto= "Mix de hongos";
+                precio= 350; 
+                break;  
+            break;
+            case 12:
+                producto= "Picada";
+                precio= 350;
+                break;  
+            case 13:
+                producto= "Vodka Citrinello";
+                precio= 400;
+                break;   
+            case 14:
+                producto= "Wodka poloca especiado";
+                precio= 400;    
+                break;
+            case 15:
+                producto= "Wodka sabor frutilla";
+                precio= 400;    
+                break;
+            case 16:
+                producto= "Wodka sabor Melón";
+                precio= 350;    
+                break;                 */                                      
         }
         console.log(precio);
     
@@ -100,4 +132,4 @@ pedido.calcularIVA();
 pedido.calcularTotal();
 
 alert("Detalle del pedido \n"+ pedido.producto + "\n Cantidad " + pedido.cantidad + "\n SubTotal " + pedido.subTotal + "\n Envio " + pedido.envio
- + "\n Total " + pedido.total);
++ "\n Total " + pedido.total);
