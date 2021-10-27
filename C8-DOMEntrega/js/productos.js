@@ -1,18 +1,23 @@
-const productos=[
+const productos = 
+[
     {
         nombre:"Sales",
-        precio:300
+        precio:"$300",
+        imagen:"./img/imagenesPP/salesPP.svg"
     },
     {
         nombre:"Rubs para pollo o pescado",
-        precio:350
+        precio:"$350",
+        imagen:"./img/imagenesPP/salesPP.svg"
     },
     {
         nombre:"Vodkas",
-        precio:400
+        precio:"$400",
+        imagen:"./img/imagenesPP/vodkasPP.svg"
     },
     {
-        nombre:"Cajas de regalo",
-        precio:850
+        nombre:"Conservas",
+        precio:"$400",
+        imagen:"./img/imagenesPP/conservasPP.svg"
     }
-];
+]
