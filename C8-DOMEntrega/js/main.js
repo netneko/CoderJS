@@ -11,7 +11,7 @@ for(let producto of productos)
     <h5 class="contProd__titulo">${producto.nombre}</h5>
     <div class="contPrecio">
         <h5 class="contPrecio__precio">${producto.precio}</h5>
-        <button class="contPrecio__boton"> Comprar</button>
+        <button class="contPrecio__boton" id="btnComprar"> Comprar</button>
     </div>
 </div>`
 divProductos.appendChild(div);
