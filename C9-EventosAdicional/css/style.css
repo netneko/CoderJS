@@ -164,7 +164,28 @@ section
     background-color:#6793b8;
     border-color:#6793b8;
 }
+/* ------------------------------------------------CARRITO DE COMPRAS------------------------------------------ */
 
+table
+{
+    border: solid #4d83af 1px ;
+    width: 100%;
+    margin: 1rem 0 2rem 0;
+    padding: 2rem;
+}
+
+th
+{
+    color:#6199c7 ;
+}
+th,td
+{
+    width: 50%;
+    text-align: center;
+    vertical-align: top;
+    border-spacing: 0;
+    padding: 0.3em;
+}
 /* ------------------------------------------------FOOTER------------------------------------------------------ */
 
 footer

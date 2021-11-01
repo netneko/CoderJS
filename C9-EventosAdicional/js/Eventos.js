@@ -5,7 +5,7 @@ botonesComprar.forEach(btnAgregar =>
     {
         btnAgregar.addEventListener("click",agregarSeleccionado)
     })
-
+const containerCarrito=document.querySelector('.containerCarrito');//trae el DIV que tiene la tabla
 
 function agregarSeleccionado(event)
 {
@@ -21,5 +21,16 @@ function agregarSeleccionado(event)
 
 function agregarAlCarrito(tituloProd,precioProd)
 {
-    const filaCarrito=document.createElement('div');
+    const filaCarrito=document.createElement('div');//creo una fila de la tabla
+    const carritodeCompras =`               
+    <tbody>
+    <td>${tituloProd}</td>
+    <td>${precioProd}</td>
+    <td>1</td>
+    </tbody>`
+    
+    ;//creo una variable que contiene el conteniedo dinamico en forma de fila
+filaCarrito.innerHTML= carritodeCompras;//le agrego a la fila del carrito creada el contenido dinamico
+containerCarrito.appendChild(filaCarrito);//agrego la fila al container
+
 }
