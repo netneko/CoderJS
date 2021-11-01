@@ -1,5 +1,8 @@
 /* Cecilia Zucchino */
 
+
+
+
 let divProductos=document.getElementById("productos");
 
 for(let producto of productos)
@@ -17,12 +20,4 @@ for(let producto of productos)
 divProductos.appendChild(div);
 } 
 
-//let boton=document.getElementById("btnComprar");
-//const arregloBotones=document.getElementById("contPrecio__boton");
-//aca tengo que hacer un for each porque esto me devuelve un arreglo de botones
-//boton.addEventListener("click",agregarAlCarrito);
-//function agregarAlCarrito()
-//{
-   // console.log("Agrego al carrito");
-//} //Me hace la accion solo para el primer boton. Supongo que esto es porque el id es unico pero el getElmentByClassName no anda
 

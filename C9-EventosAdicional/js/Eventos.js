@@ -1,36 +1,33 @@
 /* Cecilia Zucchino */
+const carrito=[];
 const botonesComprar= document.querySelectorAll(".contPrecio__boton");//Esto me devuelve los 4 botones
 console.log(botonesComprar);
 botonesComprar.forEach(btnAgregar =>
     {
-        btnAgregar.addEventListener("click",agregarSeleccionado)
+        btnAgregar.addEventListener("click",agregarSeleccionado)//Por cada boton agrego un addEventiListener
     })
-const containerCarrito=document.querySelector('.containerCarrito');//trae el DIV que tiene la tabla
+
+
+const tableBody=document.querySelector('.tBody');//trae el table body
 
 function agregarSeleccionado(event)
 {
-    const btn = event.target;
-    const item = btn.closest('.contProd');//devuelve el contenido del nodo mas cercano al parametro
-   // console.log(item); //esto me devuelve todo el contenedor del boton al que hice click
-    const tituloProd = item.querySelector('.contProd__titulo').textContent; //devuelve el conteniedo del item con la clase pasada por parametro
-    const precioProd=item.querySelector('.contPrecio__precio').textContent
-    console.log(tituloProd, precioProd);
-    agregarAlCarrito(tituloProd,precioProd) ;
-    
+    let tituloP=event.target.parentNode.parentNode.children[1].textContent;//busco el titulo del producto
+    let precioP=event.target.parentNode.children[0].textContent;//busco el precio del producto
+    let producto = new Producto (tituloP,precioP)//creo un objeto producto
+    carrito.push(producto); //agrego el objeto producto al arreglo
+    agregarAlCarrito(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
 }
 
-function agregarAlCarrito(tituloProd,precioProd)
+function agregarAlCarrito(array)
 {
-    const filaCarrito=document.createElement('div');//creo una fila de la tabla
-    const carritodeCompras =`               
-    <tbody>
-    <td>${tituloProd}</td>
-    <td>${precioProd}</td>
-    <td>1</td>
-    </tbody>`
-    
-    ;//creo una variable que contiene el conteniedo dinamico en forma de fila
-filaCarrito.innerHTML= carritodeCompras;//le agrego a la fila del carrito creada el contenido dinamico
-containerCarrito.appendChild(filaCarrito);//agrego la fila al container
+    tableBody.innerHTML="";//lo inicliazo vacio para que no me agregue mas de una fila cuando entra al foreach
+    array.forEach ((producto) => { //Por cada objeto del arreglo
+    let tr=document.createElement('tr'); //creo una fila y a esa fila le agrego lo que esta en ``
+    tr.innerHTML= `<td>${producto.nombre}</td>
+    <td>${producto.precio}</td>
+    <td>1</td>`
+    tableBody.appendChild(tr);//agrego el contenido al html
+})
 
 }
