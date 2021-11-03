@@ -1,6 +1,7 @@
 /* Cecilia Zucchino */
 const carrito=[];
 const botonesComprar= document.querySelectorAll(".contPrecio__boton");//Esto me devuelve los 4 botones
+//const botonesComprar=$(".contPrecio__boton");
 console.log(botonesComprar);
 botonesComprar.forEach(btnAgregar =>
     {
