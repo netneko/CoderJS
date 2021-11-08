@@ -1,8 +1,6 @@
 /* Cecilia Zucchino */
 const carrito=[];
 const botonesComprar= document.querySelectorAll(".contPrecio__boton");//Esto me devuelve los 4 botones
-//const botonesComprar=$(".contPrecio__boton");
-//console.log(botonesComprar);
 botonesComprar.forEach(btnAgregar =>
     {
         btnAgregar.addEventListener("click",agregarSeleccionado)//Por cada boton agrego un addEventiListener
@@ -38,8 +36,8 @@ function guardarCarrito(carrito)
 {
     if (carrito.length!=0) //Si el carrito no esta vacio, guardo lo que tiene adentro en el localStorage
     {
-        localStorage.setItem('prodsEnCarrito',JSON.stringify(carrito));
-        const prodStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
-        console.log(prodStorage);
+        localStorage.setItem('prodsEnCarrito',JSON.stringify(carrito));//lo gu ardo como JSON
+        const prodStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));//lo paso a Obj de Javascript para mosrtar
+        console.log(prodStorage);//lo muestro por consola
     }
 }
