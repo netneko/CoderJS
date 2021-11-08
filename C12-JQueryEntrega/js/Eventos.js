@@ -8,7 +8,7 @@ $(() => {
 
 
 const tableBody=document.querySelector('.tBody');//trae el table body
-
+/* Funcion agregar productos seleccionados al arreglo de Carrito */
 function agregarSeleccionado(event)
 {
     let tituloP=event.target.parentNode.parentNode.children[1].textContent;//busco el titulo del producto
@@ -20,19 +20,20 @@ function agregarSeleccionado(event)
 }
 
 /* Agregar items al carrito en el HTML */
-
 function agregarAlCarrito(array)
 {
-    tableBody.innerHTML="";//lo inicliazo vacio para que no me agregue mas de una fila cuando entra al foreach
-    array.forEach ((producto) => { //Por cada objeto del arreglo
-    let tr=document.createElement('tr'); //creo una fila y a esa fila le agrego lo que esta en ``
-    tr.innerHTML= `<td>${producto.nombre}</td>
-    <td>${producto.precio}</td>
-    <td>1</td>`
-    tableBody.appendChild(tr);//agrego el contenido al html
-})
-
+    $("#tBody").html("");//lo inicliazo vacio para que no me agregue mas de una fila cuando entra al foreach
+    array.forEach ((producto) => 
+    { //Por cada objeto del arreglo
+        $("#tBody").append(`
+        <tr>
+            <td>${producto.nombre}</td>
+            <td>${producto.precio}</td>
+            <td>1</td>
+        </tr>`)
+    });
 }
+
 
 /* Local Storage para guardar la info del carrito */
 function guardarCarrito(carrito)
