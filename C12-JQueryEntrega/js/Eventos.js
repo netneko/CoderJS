@@ -22,7 +22,7 @@ function agregarSeleccionado(event)
 /* Agregar items al carrito en el HTML */
 function agregarAlCarrito(array)
 {
-    $("#tBody").html("");//lo inicliazo vacio para que no me agregue mas de una fila cuando entra al foreach
+    $("#tBody").html("");//lo inicializo vacio para que no me agregue mas de una fila cuando entra al foreach
     array.forEach ((producto) => 
     { //Por cada objeto del arreglo
         $("#tBody").append(`
