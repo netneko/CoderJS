@@ -14,14 +14,14 @@ function agregarAlCarrito(event)
     let prodStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
     let tituloP=event.target.parentNode.parentNode.children[1].textContent;//busco el titulo del producto
     let precioP=event.target.parentNode.children[0].textContent;//busco el precio del producto
-    let idP=event.target.parentNode.parentNode.children[0].alt;
-    let index=prodStorage.findIndex(producto => producto.id === idP);
-    if(index == -1)
+    let idP=event.target.parentNode.parentNode.children[0].alt;//con esto busco el id
+    let index=prodStorage.findIndex(producto => producto.id === idP);//me fijo si el producto con el id del localstorage esigual al del clickeado
+    if(index == -1)//si no existe agrego  un nuevo prod con ese id al carrito
     {
         let producto = new Producto (tituloP,precioP,idP)//creo un objeto producto
         carrito.push(producto); //agrego el objeto producto al arreglo
     }
-    else calcularCantidad(index);
+    else calcularCantidad(index); //Si el prod ya existe llamo a la funcion calcularCantidad para que la incremente
     agregarAlCarritoHTML(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
     guardarCarritoStorage(carrito);
 }
