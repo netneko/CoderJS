@@ -1,5 +1,13 @@
 /* Cecilia Zucchino */
-const carrito=[];
+let carritoLocalStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
+let carrito;
+
+if(carritoLocalStorage){
+    carrito = carritoLocalStorage;
+}else{
+    carrito = [];
+}
+
 cargarProdtuctos();
 
 

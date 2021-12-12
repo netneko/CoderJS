@@ -1,10 +1,11 @@
 class Producto{
-    constructor(nombre,precio,id)
+    constructor(nombre,precio,id,subtotal)
     {
         this.nombre=nombre,
         this.precio=precio,
         this.id=id,
-        this.cantidad=1
+        this.cantidad=1,
+        this.subtotal=precio
     }
 
     calcularIVA()
