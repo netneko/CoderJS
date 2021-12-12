@@ -2,6 +2,7 @@
 let carritoLocalStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
 let carrito;
 
+//Si el carrito tenia guardado algo, lo levanto del local storage
 if(carritoLocalStorage){
     carrito = carritoLocalStorage;
 }else{
@@ -10,7 +11,7 @@ if(carritoLocalStorage){
 
 cargarProdtuctos();
 
-
+//Carga de productos dinamicamente en la pagina
 function cargarProdtuctos()
 {
     for(let producto of productos)
