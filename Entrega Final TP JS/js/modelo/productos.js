@@ -21,28 +21,6 @@ class Producto{
     
 }
 
-const productos =new Array();
-const URLJSON = "../js/lista_productos.json";
-
-$(document).ready(() =>
-{
-    $.getJSON(URLJSON,function(respuesta,estado)
-{
-    if(estado === "success")
-    {
-        let datos = respuesta;
-        for(const dato of datos)
-        {
-            let prod = new Producto(dato);//nombre,precio,id,subtotal
-            productos.push(prod);
-        } 
-    }
-        else
-        {
-            console.log(estado);
-        }
-})
-})
 
 /* const productos = 
 [

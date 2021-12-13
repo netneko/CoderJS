@@ -9,10 +9,37 @@ if(carritoLocalStorage){
     carrito = [];
 }
 
-cargarProdtuctos();
+//Para traer los datos del JSON
+const productos =new Array();
+const URLJSON = "../js/lista_productos.json";
+
+//cargarProductos();
+
+getElements();
+
+function getElements()
+{
+    $.getJSON(URLJSON,function(respuesta,estado)
+    {
+        if(estado === "success")
+        {
+            let datos = respuesta;
+            for(const dato of datos)
+            { 
+                let prod = new Producto(dato);
+                productos.push(prod);
+                cargarProductos();
+            } 
+        }
+            else
+            {
+                console.log(estado);
+            }
+    })
+}
 
 //Carga de productos dinamicamente en la pagina
-function cargarProdtuctos()
+function cargarProductos()
 {
     for(let producto of productos)
     {

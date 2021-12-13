@@ -6,7 +6,7 @@ $(() => {
     $(".contPrecio__boton").on('click',agregarAlCarrito); /* Le agrego el evnto a cada boton y llamo al agregarSeleccionado con un click */
     $(".divMensaje").prepend('<h6  class="msj" style="display: none" >Ya esás más cerca de hacer comidas más ricas!</h3>');
     $(".contPrecio__boton").on('click',mostrarMensaje);
-    $(".btnEliminar").on('click',eliminarProducto);
+    $(".btnEliminar").on('click',eliminarProducto); //No me esta entrando a esta funcion
 });
 
 
@@ -56,6 +56,9 @@ function calcularCantidad(index)
     carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
 } */
 
+
+
+
 /* Agregar items al carrito en el HTML */
 function agregarAlCarritoHTML(arrayCarrito)
 {
@@ -103,7 +106,6 @@ function eliminarProducto(event)
 {
     console.log("ENTRA");
     let index =carrito.findIndex(producto => producto.id == event.target.id);
-    console.log("hola");
     carrito.splice(index,1);
     e.target.parentNode.remove();
     localStorage.setItem("carrito",JSON.stringify(carrito));
