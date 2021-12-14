@@ -1,10 +1,12 @@
 /* Cecilia Zucchino */
+
 let carritoLocalStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
 let carrito;
 
 //Si el carrito tenia guardado algo, lo levanto del local storage
 if(carritoLocalStorage){
     carrito = carritoLocalStorage;
+    carritoCant(carrito);
 }else{
     carrito = [];
 }
@@ -36,24 +38,26 @@ function agregarAlCarrito(event)
             else 
             {
                 calcularCantidad(index); //Si el prod ya existe llamo a la funcion calcularCantidad para que la incremente
+                calcularSubtotal(index);
                 console.log(carrito);
             }
     agregarAlCarritoHTML(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
     guardarCarritoStorage(carrito);
-    carritoCant(carrito);
+    carritoCant(carrito); //actualizo la cantidad de items del carrito
     ejecutarBotones();
 }
 
-
+//funcion para incrementar la cantidad de productos
 function calcularCantidad(index)
 {
-    //console.log(carrito[index].precio);
     carrito[index].cantidad++;
-   carrito[index].subtotal=parseInt(carrito[index].precio) * carrito[index].cantidad;
-    
 }
 
-
+//funcion para calcular el subtotal por producto
+function calcularSubtotal(index)
+{
+    carrito[index].subtotal=parseInt(carrito[index].precio) * carrito[index].cantidad;
+}
 agregarAlCarritoHTML(carrito);
 
 /* Agregar items al carrito en el HTML */
@@ -73,16 +77,31 @@ function agregarAlCarritoHTML(arrayCarrito)
     });
 }
 
-finalizarCompra(carrito);
+finalizarCompraBoton(carrito);
 
 //Si el carrito no esta vacio, le agrego un boton de finalizar compra
-function finalizarCompra(arrayCarrito)
+function finalizarCompraBoton(arrayCarrito)
 {
     if(arrayCarrito.length > 0)
     {
         $(".finCarrito").append(`<button class="btnFinalizar"> Finalizar Compra </button>`);
+        totalCompra(carrito);
     }
 }
+
+//funcion para mostar el total del carrito
+function totalCompra (arrayCarrito)
+{
+    let totalCarrito = 0;
+    //recorrer array carrito y por cada elemento sumar su subtotal
+    for (let producto of arrayCarrito)
+    {
+        totalCarrito += producto.subtotal;
+    }
+    $(".totalCarrito").append(`<span> Total carrito : ${totalCarrito}</span>`);
+    //agregar en totalCarrito con un append
+}
+
 
 /* Local Storage para guardar la info del carrito */
 function guardarCarritoStorage(arrayCarrito)
@@ -103,11 +122,12 @@ function carritoCant(arrayCarrito)
         totalProductos += producto.cantidad;
     }
     iconoCarrito.innerHTML = "";
-    iconoCarrito.innerHTML= `<p class="cantidadCarrito">(${totalProductos})</p>`;
+    iconoCarrito.innerHTML= `<span class="cantidadCarrito">(${totalProductos})</span>`;
 }
 
 let botonEliminar;
 
+//agrego un evento a cada uno de los botones (si el carrito no esta vacio)
 function ejecutarBotones()
 {
     
@@ -130,8 +150,13 @@ function eliminarProducto(event)
     let index =carrito.findIndex(producto => producto.id == event.target.id);
     carrito.splice(index,1);
     event.target.parentNode.parentNode.remove();
+    carritoCant(carrito);
     localStorage.setItem("prodsEncarrito",JSON.stringify(carrito));
+    
 } 
 
 
-    
+//Update carrito?
+//Me falta que cuando elimino un producto del carrito
+//Se actualize el precio total
+//Se actualize la cantidad de elementos del carrito
