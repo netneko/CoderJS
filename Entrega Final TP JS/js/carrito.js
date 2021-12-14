@@ -1,4 +1,13 @@
 /* Cecilia Zucchino */
+let carritoLocalStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
+let carrito;
+
+//Si el carrito tenia guardado algo, lo levanto del local storage
+if(carritoLocalStorage){
+    carrito = carritoLocalStorage;
+}else{
+    carrito = [];
+}
 
  /* Forma corta del document ready */
  /* Mostrar mensaje cada vez que se agrega algo al carrito */
@@ -9,25 +18,18 @@ $(() => {
     $(".btnEliminar").on('click',eliminarProducto); //No me esta entrando a esta funcion
 });
 
+//let botones = document.querySelectorAll(".contPrecio__boton");
+//botones.forEach((botones) => botones.addEventListener('click',agregarAlCarrito));
 
 /* Funcion agregar productos seleccionados al arreglo de Carrito */
 function agregarAlCarrito(event)
 {
-    let prodStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));
+
     let tituloP=event.target.parentNode.parentNode.children[1].textContent;//busco el titulo del producto
     let precioP=event.target.parentNode.children[0].textContent;//busco el precio del producto
     let idP=event.target.parentNode.parentNode.children[0].alt;//con esto busco el id
-    //Si el storage esta vacio
-    //creo un nuevo producto
-    //lo agrego
-    if(prodStorage==null)
-    {
-        let producto = new Producto (tituloP,precioP,idP)//creo un objeto producto
-        carrito.push(producto); //agrego el objeto producto al arreglo
-    }
-    else //si el storage NO esta vacio
-        {
-            let index=prodStorage.findIndex(producto => producto.id === idP);//me fijo si el producto con el id del localstorage esigual al del clickeado
+    console.log(precioP)
+            let index=carrito.findIndex(producto => producto.id === idP);//me fijo si el producto con el id del localstorage esigual al del clickeado
             if(index == -1)//si no existe agrego  un nuevo prod con ese id al carrito
             {
                 let producto = new Producto (tituloP,precioP,idP)//creo un objeto producto
@@ -36,28 +38,23 @@ function agregarAlCarrito(event)
             else 
             {
                 calcularCantidad(index); //Si el prod ya existe llamo a la funcion calcularCantidad para que la incremente
-                //calcularSubTotal(index);
+                console.log(carrito);
+                //carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
             }
-        }
-    
+           //carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
     agregarAlCarritoHTML(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
     guardarCarritoStorage(carrito);
     carritoCant(carrito);
 }
 
+console.log(carrito);
 function calcularCantidad(index)
 {
     carrito[index].cantidad++;
 }
 
-/* function calcularSubTotal(index)
-{
-    
-    carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
-} */
 
-
-
+//agregarAlCarritoHTML(carrito);
 
 /* Agregar items al carrito en el HTML */
 function agregarAlCarritoHTML(arrayCarrito)
