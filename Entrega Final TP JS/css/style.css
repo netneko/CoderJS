@@ -206,6 +206,21 @@ th,td
     font-size: 0.9rem;
     padding: 0.2rem;
 }
+
+.finCarrito
+{
+    text-align: center;
+}
+.btnFinalizar
+{
+    background-color:#5e99ca;
+    border-color:#5e99ca;
+    border-radius: 2%;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
+}
 /* ------------------------------------------------FOOTER------------------------------------------------------ */
 
 footer

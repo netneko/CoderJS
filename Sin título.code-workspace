@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../SPA_PLANTILLA/misitio"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "CoderJS",
+		"xd.globalEditor": false
+	}
+}
