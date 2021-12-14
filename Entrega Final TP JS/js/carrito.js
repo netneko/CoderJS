@@ -18,8 +18,6 @@ $(() => {
     $(".btnEliminar").on('click',eliminarProducto); //No me esta entrando a esta funcion
 });
 
-//let botones = document.querySelectorAll(".contPrecio__boton");
-//botones.forEach((botones) => botones.addEventListener('click',agregarAlCarrito));
 
 /* Funcion agregar productos seleccionados al arreglo de Carrito */
 function agregarAlCarrito(event)
@@ -39,22 +37,22 @@ function agregarAlCarrito(event)
             {
                 calcularCantidad(index); //Si el prod ya existe llamo a la funcion calcularCantidad para que la incremente
                 console.log(carrito);
-                //carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
             }
-           //carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
     agregarAlCarritoHTML(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
     guardarCarritoStorage(carrito);
     carritoCant(carrito);
+    ejecutarBotones();
 }
 
 console.log(carrito);
 function calcularCantidad(index)
 {
     carrito[index].cantidad++;
+    carrito[index].subtotal=carrito[index].precio * carrito[index].cantidad;
 }
 
 
-//agregarAlCarritoHTML(carrito);
+agregarAlCarritoHTML(carrito);
 
 /* Agregar items al carrito en el HTML */
 function agregarAlCarritoHTML(arrayCarrito)
@@ -75,14 +73,13 @@ function agregarAlCarritoHTML(arrayCarrito)
 /* 
 
 /* Local Storage para guardar la info del carrito */
-function guardarCarritoStorage(carrito)
+function guardarCarritoStorage(arrayCarrito)
 {
-    if (carrito.length!=0) //Si el carrito no esta vacio, guardo lo que tiene adentro en el localStorage
-    {
-        localStorage.setItem('prodsEnCarrito',JSON.stringify(carrito));//lo guardo como JSON
+
+        localStorage.setItem('prodsEnCarrito',JSON.stringify(arrayCarrito));//lo guardo como JSON
         let prodStorage= JSON.parse(localStorage.getItem('prodsEnCarrito'));//lo paso a Obj de Javascript para mostrar
         console.log(prodStorage);//lo muestro por consola
-    }
+
 }
 /* Funcion para que me muestre la cantidad de elementos que hay en el carrito */
 function carritoCant(arrayCarrito) 
@@ -97,15 +94,32 @@ function carritoCant(arrayCarrito)
     iconoCarrito.innerHTML= `<p class="cantidadCarrito">(${totalProductos})</p>`;
 }
 
+let botonEliminar;
 
+function ejecutarBotones()
+{
+    
+    botonEliminar =document.querySelectorAll(".btnEliminar");
+    if(carrito.length > 0)
+    {
+        botonEliminar.forEach(boton => {
+            boton.addEventListener("click",eliminarProducto);
+        });
+    }  
+}
+
+if(carrito.length > 0)
+{
+    ejecutarBotones();
+}
 /* Funcion para eliminar los productos del carrito */
 function eliminarProducto(event) 
 {
     console.log("ENTRA");
     let index =carrito.findIndex(producto => producto.id == event.target.id);
     carrito.splice(index,1);
-    e.target.parentNode.remove();
-    localStorage.setItem("carrito",JSON.stringify(carrito));
+    event.target.parentNode.parentNode.remove();
+    localStorage.setItem("prodsEncarrito",JSON.stringify(carrito));
 } 
 
 
