@@ -1,15 +1,15 @@
 [
     {
-        "nombre":"Sales",
-        "precio":300,
-        "imagen":"./img/imagenesPP/salesPP.svg",
-        "id":1
-    },
-    {
         "nombre":"Rubs para pollo o pescado",
         "precio":350,
         "imagen":"./img/imagenesPP/salesPP.svg",
         "id":2
+    },
+    {
+        "nombre":"Sales",
+        "precio":300,
+        "imagen":"./img/imagenesPP/salesPP.svg",
+        "id":1
     },
     {
         "nombre":"Vodkas",

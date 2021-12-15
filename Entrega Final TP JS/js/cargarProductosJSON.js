@@ -45,7 +45,7 @@ let datosLocales;
 
 if(JSON.parse(localStorage.getItem("datos"))!=null)
 {
-     datosLocales = JSON.parse(localStorage.getItem("datos"));
+    datosLocales = JSON.parse(localStorage.getItem("datos"));
 }
 //Traigo los botones
 //les agrego un evento
@@ -63,7 +63,7 @@ btnRubs.addEventListener("click",filtrarRubs);
 
 //boton vodkas
 let btnVodkas =document.getElementById("vodkas");
-btnRubs.addEventListener("click",filtrarVodkas);
+btnVodkas.addEventListener("click",filtrarVodkas);
 
 //funciones para filtrar
 //sales
@@ -92,18 +92,24 @@ function filtrarVodkas()
 {
     let arrayVodkas = datosLocales.filter((producto) => producto.nombre == "Vodkas");
     cargarProductos(arrayVodkas);
-}
+} 
 
-
+//traigo el item del drop down y le agrego un evento
 let mayor=document.querySelector("#mayor");
 mayor.addEventListener('click',ordenarMayorAMenor);
+
+let menor=document.querySelector("#menor");
+menor.addEventListener('click',ordenarMenorAMayor);
 
 
 function ordenarMayorAMenor() {
     let arrayOrdenado = [];
-
     arrayOrdenado = datosLocales.sort((a, b) => b.precio - a.precio);
     cargarProductos(arrayOrdenado);
+}
 
-
+function ordenarMenorAMayor() {
+    let arrayOrdenado = [];
+    arrayOrdenado = datosLocales.sort((a,b) => a.precio - b.precio);
+    cargarProductos(arrayOrdenado);
 }
