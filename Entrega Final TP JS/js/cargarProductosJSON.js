@@ -1,5 +1,5 @@
 //Para traer los datos del JSON
-const productos =new Array();
+const productos = new Array();
 const URLJSON = "js/listaProductos.json"
 
 
@@ -7,29 +7,22 @@ getElements();
 
 
 
- function getElements()
-{
-    $.getJSON(URLJSON,function(respuesta,estado)
-    {
-        if(estado === "success")
-        {
+function getElements() {
+    $.getJSON(URLJSON, function (respuesta, estado) {
+        if (estado === "success") {
             let datos = respuesta;
             cargarProductos(datos);
-            localStorage.setItem("datos",JSON.stringify(datos));
+            localStorage.setItem("datos", JSON.stringify(datos));
+        } else {
+            console.log(estado);
         }
-            else
-            {
-                console.log(estado);
-            }
     })
 }
 
 //Carga de productos dinamicamente en la pagina
-function cargarProductos(datos)
-{
+function cargarProductos(datos) {
     $('#productos').html("");
-    for(let producto of datos)
-    {
+    for (let producto of datos) {
         $('#productos').append(`<div class="contProd">
         <img src="${producto.imagen}" alt="${producto.id}" class="contProd__img">
         <h5 class="contProd__titulo">${producto.nombre}</h5>
@@ -43,63 +36,58 @@ function cargarProductos(datos)
 
 let datosLocales;
 
-if(JSON.parse(localStorage.getItem("datos"))!=null)
-{
+if (JSON.parse(localStorage.getItem("datos")) != null) {
     datosLocales = JSON.parse(localStorage.getItem("datos"));
 }
 //Traigo los botones
 //les agrego un evento
 //boton sales
-let btnSales =document.getElementById("sales");
-btnSales.addEventListener("click",filtrarSales);
+let btnSales = document.getElementById("sales");
+btnSales.addEventListener("click", filtrarSales);
 
 //boton conservas
-let btnConservas =document.getElementById("conservas");
-btnConservas.addEventListener("click",filtrarConservas);
+let btnConservas = document.getElementById("conservas");
+btnConservas.addEventListener("click", filtrarConservas);
 
 //boton rubs
-let btnRubs =document.getElementById("rubs");
-btnRubs.addEventListener("click",filtrarRubs);
+let btnRubs = document.getElementById("rubs");
+btnRubs.addEventListener("click", filtrarRubs);
 
 //boton vodkas
-let btnVodkas =document.getElementById("vodkas");
-btnVodkas.addEventListener("click",filtrarVodkas);
+let btnVodkas = document.getElementById("vodkas");
+btnVodkas.addEventListener("click", filtrarVodkas);
 
 //funciones para filtrar
 //sales
-function filtrarSales()
-{
+function filtrarSales() {
     let arraySales = datosLocales.filter((producto) => producto.nombre == "Sales");
     cargarProductos(arraySales);
 }
 
 //conservas
-function filtrarConservas()
-{
+function filtrarConservas() {
     let arrayConservas = datosLocales.filter((producto) => producto.nombre == "Conservas");
     cargarProductos(arrayConservas);
 }
 
 //rubs
-function filtrarRubs()
-{
+function filtrarRubs() {
     let arrayRubs = datosLocales.filter((producto) => producto.nombre == "Rubs para pollo o pescado");
     cargarProductos(arrayRubs);
 }
 
 //vodkas
-function filtrarVodkas()
-{
+function filtrarVodkas() {
     let arrayVodkas = datosLocales.filter((producto) => producto.nombre == "Vodkas");
     cargarProductos(arrayVodkas);
-} 
+}
 
 //traigo el item del drop down y le agrego un evento
-let mayor=document.querySelector("#mayor");
-mayor.addEventListener('click',ordenarMayorAMenor);
+let mayor = document.querySelector("#mayor");
+mayor.addEventListener('click', ordenarMayorAMenor);
 
-let menor=document.querySelector("#menor");
-menor.addEventListener('click',ordenarMenorAMayor);
+let menor = document.querySelector("#menor");
+menor.addEventListener('click', ordenarMenorAMayor);
 
 
 function ordenarMayorAMenor() {
@@ -110,6 +98,6 @@ function ordenarMayorAMenor() {
 
 function ordenarMenorAMayor() {
     let arrayOrdenado = [];
-    arrayOrdenado = datosLocales.sort((a,b) => a.precio - b.precio);
+    arrayOrdenado = datosLocales.sort((a, b) => a.precio - b.precio);
     cargarProductos(arrayOrdenado);
 }
