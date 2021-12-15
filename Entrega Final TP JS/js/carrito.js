@@ -44,8 +44,11 @@ function agregarAlCarrito(event)
     agregarAlCarritoHTML(carrito);//llamo a la funcion para agregar el producto al carrito y mostrarlo en html
     guardarCarritoStorage(carrito);
     carritoCant(carrito); //actualizo la cantidad de items del carrito
+    //totalCompra(carrito);
     ejecutarBotones();
 }
+
+//totalCompra(carrito);
 
 //funcion para incrementar la cantidad de productos
 function calcularCantidad(index)
@@ -64,7 +67,6 @@ agregarAlCarritoHTML(carrito);
 function agregarAlCarritoHTML(arrayCarrito)
 {
     $("#tBody").html("");//lo inicializo vacio para que no me agregue mas de una fila cuando entra al foreach
-    finalizarCompraBoton(carrito);
     arrayCarrito.forEach ((producto) => 
     { //Por cada objeto del arreglo
         $("#tBody").append(`
@@ -76,32 +78,37 @@ function agregarAlCarritoHTML(arrayCarrito)
             <td><button class="btnEliminar" id=${producto.id}>Eliminar</button></td>
         </tr>`)
     });
-    
+    totalCompra(carrito);
 }
 
-
+finalizarCompraBoton(carrito);
 
 //Si el carrito no esta vacio, le agrego un boton de finalizar compra
 function finalizarCompraBoton(arrayCarrito)
 {
-    if(arrayCarrito.length > 0)
+    console.log(arrayCarrito.length);
+    if(arrayCarrito.length >= 0)
     {
-        $(".finCarrito").append(`<button class="btnFinalizar"> Finalizar Compra </button>`);
-        totalCompra(carrito);
+        $(".finCarrito").append(`<button class="btnFinalizar" id="btnFinCompra"> Finalizar Compra </button>`);
     }
+    let btnFinalizar= document.getElementById("btnFinCompra");
+    btnFinalizar.addEventListener("click",finalizarCompra);
+
 }
+
 
 //funcion para mostar el total del carrito
 function totalCompra (arrayCarrito)
-{
+{   
     let totalCarrito = 0;
     //recorrer array carrito y por cada elemento sumar su subtotal
     for (let producto of arrayCarrito)
-    {
-        totalCarrito += producto.subtotal;
+    {   
+        
+        totalCarrito = totalCarrito + producto.subtotal;
     }
-    $(".totalCarrito").append(`<span> Total carrito : ${totalCarrito}</span>`);
-    //agregar en totalCarrito con un append
+    $(".totalCarrito").html("");
+    $(".totalCarrito").append(`<span> Total carrito : $</span>${totalCarrito}`);
 }
 
 
@@ -152,34 +159,17 @@ function eliminarProducto(event)
     let index =carrito.findIndex(producto => producto.id == event.target.id);
     carrito.splice(index,1);
     event.target.parentNode.parentNode.remove();
-    restarCarritoCant(carrito);
-    //restarTotalCompra(carrito);
+    carritoCant(carrito);
+    totalCompra(carrito);
     localStorage.setItem("prodsEncarrito",JSON.stringify(carrito));
     
 } 
 
-//funcion restar cantidad del carrito
-function restarCarritoCant(arrayCarrito) 
+
+function finalizarCompra (event)
 {
-    let iconoCarrito = document.getElementById("icono_carrito"); 
-    let cantidadCarito = carritoCant(arrayCarrito) - 1;
-    carritoCant(arrayCarrito);
-}
-//funcion restar del total de la compra
-function restarTotalCompra (arrayCarrito)
-{
-    let totalCarrito = 0;
-    //recorrer array carrito y por cada elemento sumar su subtotal
-    for (let producto of arrayCarrito)
-    {
-        totalCarrito = producto.subtotal --;
-    }
-    $(".totalCarrito").append(`<span> Total carrito : ${totalCarrito}</span>`);
-    //agregar en totalCarrito con un append
+    //Menaje de finalizaste la compra
+    localStorage.clear();
+    window.location.reload();
 }
 
-
-//Update carrito?
-//Me falta que cuando elimino un producto del carrito
-//Se actualize el precio total
-//Se actualize la cantidad de elementos del carrito

@@ -58,10 +58,10 @@
             </div>
             <div class="buttons">
                 <!-- div botones -->
-                <button type="button" class="btn btn-primary boton">Sales</button>
-                <button type="button" class="btn btn-secondary boton">Conservas</button>
-                <button type="button" class="btn btn-success boton">Rubs</button>
-                <button type="button" class="btn btn-success boton">Vodkas</button>
+                <button type="button" class="btn btn-primary boton" id="sales">Sales</button>
+                <button type="button" class="btn btn-secondary boton" id="conservas">Conservas</button>
+                <button type="button" class="btn btn-success boton" id="rubs">Rubs</button>
+                <button type="button" class="btn btn-success boton" id="vodkas">Vodkas</button>
             </div>
             <!-- Dropdown -->
             <div class="dropdown">
@@ -70,9 +70,8 @@
                     Ordenar por
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Precio: De mayor a menor</a></li>
-                    <li><a class="dropdown-item" href="#">Precio : De menor a mayor</a></li>
-                    <li><a class="dropdown-item" href="#">Novedades</a></li>
+                    <li><button class="dropdown-item" href="#" id="mayor">Precio: De mayor a menor</button></li>
+                    <li><a class="dropdown-item" href="#"id="menor">Precio : De menor a mayor</a></li>
                 </ul>
             </div>
             <!-- Productos -->
