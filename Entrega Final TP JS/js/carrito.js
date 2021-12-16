@@ -164,6 +164,8 @@ function eliminarProducto(event)
 function finalizarCompra (event)
 {
     //Menaje de finalizaste la compra
+    $(".espacioMsjFin").prepend('<span  class="MsjFin" style="display: none" >Pedido finalizado!</span>');
+    mostrarMensajeFinCompra();
     localStorage.clear();
     window.location.reload();
 }

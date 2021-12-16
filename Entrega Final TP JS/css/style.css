@@ -227,6 +227,17 @@ th,td
     padding: 0.2rem;
     margin-bottom: 3rem;
 }
+
+
+.MsjFin
+{
+    color: #061b2c;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    margin-left: 3.5rem;
+    text-align: center;
+}
 /* ------------------------------------------------FOOTER------------------------------------------------------ */
 
 footer
